@@ -25,6 +25,7 @@ const myDog = {
     maxCust: 65,
     AverageCookies:  6.3,
     rate : null,
+    photo: './images/seattle.jpeg',
 
     getRate: function(){
    this.rate = `${_randomRate()};`
@@ -42,9 +43,9 @@ const myDog = {
     maxCust: 24,
     AverageCookies: 1.2,
     rate: null,
-
+    photo: './images/tokyo.jpeg',
     getRate: function(){
-   this.rate = `${_randomRate(minCust, maxCust)};`
+   this.rate = `${_randomRate()}`;
 
 
     }
@@ -58,9 +59,9 @@ const myDog = {
     maxCust: 38,
     AverageCookies: 3.7,
     rate: null,
-
+    photo: './images/dubai.jpeg',
     getRate: function(){
-   this.rate = `${_randomRate(minCust, maxCust)};`
+   this.rate = `${_randomRate()};`
 
 
     }
@@ -74,9 +75,10 @@ const myDog = {
     maxCust: 38,
     AverageCookies: 2.3,
     rate: null,
+    photo: './images/paris.jpeg',
 
     getRate: function(){
-   this.rate = `${_randomRate(minCust, maxCust)};`
+   this.rate = `${_randomRate()};`
 
 
     }
@@ -90,9 +92,9 @@ const myDog = {
     maxCust: 16,
     AverageCookies: 4.6,
     rate: null,
-
+    photo: './images/lima.jpeg',
     getRate: function(){
-    this.rate = `${_randomRate(minCust, maxCust)}`
+    this.rate = `${_randomRate()}`
 
 
     }
@@ -131,7 +133,7 @@ getAllStoreRates();
 
 
 
-function renderRates(store) {
+function renderRates() {
 
   const articleElem = document.createElement('article');
   storeDiv.appendChild(articleElem);
@@ -164,8 +166,25 @@ function renderAllRates() {
   for (let i = 0; i < store.length; i++) {
     let currentStore = store[i];
     renderRates(currentStore);
-  }
-}
+  
+
+
+  const articleElem = document.createElement('article');
+  // renderCookies.appendChild(articleElem);
+  
+  const ulElem = document.createElement('ul');
+   articleElem.appendChild(ulElem);
+
+  const cookieTime = ['0600', '0700', '0800', '0900', '1000', '1100', '1200', '1300', '1400', '1500', '1600', '1700', '1800', '1900'];
+
+   for(let i = 0; i < cookieTime.length; i++){
+  
+    console.log (cookieTime[i]);
+    const liElem= document.createElement('li');
+     liElem.textContent = `${cookieTime}` + `${currentStore.rate * currentStore.AverageCookies}`;
+
+
+}}}
 
 renderAllRates();
 
@@ -205,7 +224,7 @@ renderAllRates();
 
 
      
-      
+// ____________________________________
 
 // function renderCookies(){
 
@@ -224,12 +243,14 @@ renderAllRates();
   
 //     console.log (cookieTime[i]);
 //     const liElem= document.createElement('li');
-//      liElem.textContent = `${cookieTime}` + `${cookiesPerHour()}`;
+//      liElem.textContent = `${cookieTime}` + `${currentStore.rate * currentStore.AverageCookies}`;
 //      ulElem.appendChild(liElem); }
 
 
 //    }
 // console.log(renderCookies());
+
+// _______________________________________________
 
 // console.log(lima.cookiesPerHour());
 
