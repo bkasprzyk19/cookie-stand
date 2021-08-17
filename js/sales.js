@@ -24,10 +24,10 @@ const myDog = {
     minCust: 23,
     maxCust: 65,
     AverageCookies:  6.3,
-    rate = null,
+    rate : null,
 
     getRate: function(){
-   this.rate = `${_randomRate(minCust, maxCust)};`
+   this.rate = `${_randomRate()};`
 
 
     }
@@ -41,7 +41,7 @@ const myDog = {
     minCust: 3,
     maxCust: 24,
     AverageCookies: 1.2,
-    rate = null,
+    rate: null,
 
     getRate: function(){
    this.rate = `${_randomRate(minCust, maxCust)};`
@@ -57,7 +57,7 @@ const myDog = {
     minCust: 11,
     maxCust: 38,
     AverageCookies: 3.7,
-    rate = null,
+    rate: null,
 
     getRate: function(){
    this.rate = `${_randomRate(minCust, maxCust)};`
@@ -73,7 +73,7 @@ const myDog = {
     minCust: 20,
     maxCust: 38,
     AverageCookies: 2.3,
-    rate = null,
+    rate: null,
 
     getRate: function(){
    this.rate = `${_randomRate(minCust, maxCust)};`
@@ -89,21 +89,22 @@ const myDog = {
     minCust: 2,
     maxCust: 16,
     AverageCookies: 4.6,
-    rate = null,
+    rate: null,
 
     getRate: function(){
-   this.rate = `${_randomRate(minCust, maxCust)};`
+    this.rate = `${_randomRate(minCust, maxCust)}`
 
 
     }
 
   }
 
-  function _randomRate(min, max){
+
+  function _randomRate(minCust, maxCust){
 
 
-let number = Math.floor(Math.random() * (max - min) + min);
-
+let number = Math.floor(Math.random() * (maxCust - minCust) + minCust);
+console.log(number);
 return number;
 
 
@@ -116,10 +117,12 @@ return number;
     for(let i = 0; i < store.length; i++){
 
       let currentStore = store[i];
-      currentStore.getRate();
-      console.log(`${currentStore.name} is selling at ${currentStore.rate * currentStore.AverageCookies} cookies per hour`);
+      
+      console.log(currentStore.getRate());
 
-  }
+      console.log(`${currentStore.name} is selling at ${currentStore.getRate() } cookies per hour`);
+
+  }}
 
 
 getAllStoreRates();
@@ -204,29 +207,29 @@ renderAllRates();
      
       
 
-function renderCookies(){
+// function renderCookies(){
 
   
 
 
-  const articleElem = document.createElement('article');
-  // renderCookies.appendChild(articleElem);
+//   const articleElem = document.createElement('article');
+//   // renderCookies.appendChild(articleElem);
   
-  const ulElem = document.createElement('ul');
-   articleElem.appendChild(ulElem);
+//   const ulElem = document.createElement('ul');
+//    articleElem.appendChild(ulElem);
 
-  const cookieTime = ['0600', '0700', '0800', '0900', '1000', '1100', '1200', '1300', '1400', '1500', '1600', '1700', '1800', '1900'];
+//   const cookieTime = ['0600', '0700', '0800', '0900', '1000', '1100', '1200', '1300', '1400', '1500', '1600', '1700', '1800', '1900'];
 
-   for(let i = 0; i < cookieTime.length; i++){
+//    for(let i = 0; i < cookieTime.length; i++){
   
-    console.log (cookieTime[i]);
-    const liElem= document.createElement('li');
-     liElem.textContent = `${cookieTime}` + `${cookiesPerHour()}`;
-     ulElem.appendChild(liElem); }
+//     console.log (cookieTime[i]);
+//     const liElem= document.createElement('li');
+//      liElem.textContent = `${cookieTime}` + `${cookiesPerHour()}`;
+//      ulElem.appendChild(liElem); }
 
 
-   }
-console.log(renderCookies());
+//    }
+// console.log(renderCookies());
 
 // console.log(lima.cookiesPerHour());
 
@@ -249,5 +252,3 @@ console.log(renderCookies());
 
 // lima.getSalesRate();
 // console.log(lima);
-
-// function salesRate()
