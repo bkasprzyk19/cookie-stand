@@ -181,7 +181,7 @@ function renderAllRates() {
   
     console.log (cookieTime[i]);
     const liElem= document.createElement('li');
-     liElem.textContent = `${cookieTime}` + `${currentStore.rate * currentStore.AverageCookies}`;
+     liElem.textContent = `${cookieTime}` + `${currentStore.rate} * ${currentStore.AverageCookies}`;
 
 
 }}}
