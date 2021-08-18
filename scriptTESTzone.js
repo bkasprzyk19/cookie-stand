@@ -101,3 +101,44 @@ const myDog = {
   }
   
   renderFlock();
+
+  _____________________________________
+
+
+function Salad(name, greens, dressing, cheese){
+
+this.name = name;
+this.greens = greens;
+this.dressing = dressing;
+this.cheese = cheese;
+
+Salad.saladBar.push(this);
+}
+
+const joesSalad = new Salad('joe', 'spinach', 'ranch', ['mozzerella', 'provelone'],);
+
+const kevinsSalad = new Salad('kevin', 'iceberg', 'oil', 'american' );
+
+console.log(joesSalad);
+console.log(kevinsSalad);
+
+
+Salad.prototype.bowls = 12;
+console.log(kevinsSalad.bowls);
+
+Salad.saladBar = [];
+
+Salad.prototype.dish = function() {
+
+  console.log(`${this.name}'s salad had been served`);
+
+
+}
+
+kevinsSalad.dish();
+joesSalad.dish();
+
+new Salad('brian', 'iceburg', 'balsamic', 'parmesean');
+
+console.log(saladBar);
+

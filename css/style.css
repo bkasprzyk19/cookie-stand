@@ -9,9 +9,20 @@ body{
   
 div{}
 
+table{
 
-
-
+text-align: left;
+padding: 5px 10px;
+border-bottom: 1px solid gray;
+border: 1px solid gray;
+border collapse: collapse;
+border-spacing: 0;
+}
+tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
 
 footer{}
 
