@@ -223,7 +223,7 @@ fillHourlySalesArrayAllLocations();
 
   const element = document.createElement(tag);
 
-  storeProfiles.appendChild(element);
+  parent.appendChild(element);
 
   if(text){
     element.textContent = text;
@@ -234,9 +234,32 @@ fillHourlySalesArrayAllLocations();
 
 Location.prototype.renderSingleLocation = function(body){
   let total = 0;
-  
+  const rowElem = document.createElement('tr');
+  body.appendChild(rowElem);
+
+    const thElem = _makeElement('th', rowElem, this.name);
+    for (let i = 0; i < cookieTime.length; i++) {
+      let cookiesNow = this.hourlySalesArray[i];
+      total += cookiesNow;
+      _makeElement('td', rowElem, cookiesNow);
 
 
+    }
+_makeElement('td', rowElem, total)}
+
+
+
+function renderAllLocations(){
+
+
+
+let tbodyElem = _makeElement('tbody', storeTable, null);
+  for(let i = 0; i < Location.allLocations.length; i++) {
+    Location.allLocations[i].renderSingleLocation(tbodyElem);
+  }
+
+}
+renderAllLocations();
   // const articleElem = _makeElement ('article', storeProfiles.Div, null);
 
   // _makeElement ('h3', articleElem, location.name);
@@ -252,7 +275,7 @@ Location.prototype.renderSingleLocation = function(body){
 // const totalsString = `Total: ${total} cookies`;
 // _makeElement('li', ulElem, totalsString);
 
-}
+
 
 
 
