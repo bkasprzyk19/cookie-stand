@@ -17,148 +17,206 @@ const myDog = {
   
   myDog.toString();
 
-  const storeDiv = document.getElementById('storeProfiles');
-
-  const seattle = {
-    name: 'seattle',
-    minCust: 23,
-    maxCust: 65,
-    AverageCookies:  6.3,
-    hourlySalesArray: [],
-    // rate: null,
-    photo: './images/seattle.jpeg',
-    // getRate: function(){
-    // this.rate = `${_randomRate()}`,
-
-   
-    randomNumberofCust: function(){
-
-        return Math.floor(Math.random() * ((this.maxCust - this.minCust) + this.minCust))}
-
-    ,
-    
-  fillHourlySalesArray: function(){
-    for(let i = 0; i < cookieTime.length; i++){
-
-      let salesPerHour = this.randomNumberofCust() * this.AverageCookies;
-      this.hourlySalesArray.push(salesPerHour);}}}
 
 
-      
-    
-  const tokyo = {
-    name: 'tokyo',
-    minCust: 3,
-    maxCust: 24,
-    AverageCookies: 1.2,
-    hourlySalesArray: [],
-    // rate: null,
-    photo: './images/tokyo.jpeg',
-    // getRate: function(){
-    // this.rate = `${_randomRate()}`,
+function Location(name, minCust, maxCust, AverageCookies) {
 
-   
-    randomNumberofCust: function(){
+  this.name = name;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.AverageCookies = AverageCookies;
+  this.hourlySalesArray = [];
 
-        return Math.floor(Math.random() * ((this.maxCust - this.minCust) + this.minCust))}
+  Location.allLocations.push(this);
+}
 
-    ,
-    
-  fillHourlySalesArray: function(){
-    for(let i = 0; i < cookieTime.length; i++){
+Location.allLocations = [];
 
-      let salesPerHour = this.randomNumberofCust() * this.AverageCookies;
-        this.hourlySalesArray.push(salesPerHour);}}}
+Location.prototype.randomNumberofCust = function(){
 
-            
+    return Math.floor(Math.random() * ((this.maxCust - this.minCust) + this.minCust));}
 
-  const dubai = {
-    name: 'dubai',
-    minCust: 11,
-    maxCust: 38,
-    AverageCookies: 3.7,
-    hourlySalesArray: [],
-    // rate: null,
-    photo: './images/dubai.jpeg',
-    // getRate: function(){
-    // this.rate = `${_randomRate()}`,
+const cookieTime = ['0600', '0700', '0800', '0900', '1000', '1100',   '1200', '1300', '1400', '1500', '1600', '1700', '1800', '1900'];
 
-   
-    randomNumberofCust: function(){
+  
 
-        return Math.floor(Math.random() * ((this.maxCust - this.minCust) + this.minCust))}
+Location.prototype.fillHourlySalesArray = function(){
+  for(let i = 0; i < cookieTime.length; i++){
 
-    ,
-    
-  fillHourlySalesArray: function(){
-    for(let i = 0; i < cookieTime.length; i++){
-
-      let salesPerHour = this.randomNumberofCust() * this.AverageCookies;
-      this.hourlySalesArray.push(salesPerHour);}
+  let salesPerHour = this.randomNumberofCust() * this.AverageCookies;
+  this.hourlySalesArray.push(Math.ceil(salesPerHour))}
+}
 
 
-  }}
+const seattle = new Location('Seattle', 23, 65, 6.3);
+const tokyo = new Location('Tokyo', 3, 24, 1.2);
+const dubai = new Location('Dubai', 11, 38, 3.7);
+const paris = new Location('Paris', 20, 38, 2.3);
+const lima = new Location('Lima', 2, 16, 4.6);
 
-  const paris = {
-    name: 'paris',
-    minCust: 20,
-    maxCust: 38,
-    hourlySalesArray: [],
-    // rate: null,
-    photo: './images/paris.jpeg',
-    // getRate: function(){
-    // this.rate = `${_randomRate()}`,
+function fillHourlySalesArrayAllLocations() {
 
-   
-    randomNumberofCust: function(){
-
-        return Math.floor(Math.random() * ((this.maxCust - this.minCust) + this.minCust))}
-
-    ,
-    
-  fillHourlySalesArray: function(){
-    for(let i = 0; i < cookieTime.length; i++){
-
-      let salesPerHour = this.randomNumberofCust() * this.AverageCookies;
-      this.hourlySalesArray.push(salesPerHour);}
-    }
-
-
-  }
-
-  const lima = {
-    name: 'lima',
-    minCust: 2,
-    maxCust: 16,
-    AverageCookies: 4.6,
-    hourlySalesArray: [],
-    // rate: null,
-    photo: './images/lima.jpeg',
-    // getRate: function(){
-    // this.rate = `${_randomRate()}`,
-
-   
-    randomNumberofCust: function(){
-
-        return Math.floor(Math.random() * ((this.maxCust - this.minCust) + this.minCust))}
-
-    ,
-    
-  fillHourlySalesArray: function(){
-    for(let i = 0; i < cookieTime.length; i++){
-
-      let salesPerHour = this.randomNumberofCust() * this.AverageCookies;
-      this.hourlySalesArray.push(salesPerHour);}
-
+  for (let i = 0; i < Location.allLocations.length; i++) {
+     const currentLocation = Location.allLocations[i];
+    currentLocation.fillHourlySalesArray();
 
   }
 
 
 }
 
+fillHourlySalesArrayAllLocations();
+
+
+
+
+
+
+
+  const storeTable = document.getElementById('storeProfiles');
+
+
+//   const seattle = {
+//     name: 'seattle',
+//     minCust: 23,
+//     maxCust: 65,
+//     AverageCookies:  6.3,
+//     hourlySalesArray: [],
+//     // rate: null,
+//     photo: './images/seattle.jpeg',
+//     // getRate: function(){
+//     // this.rate = `${_randomRate()}`,
+
+   
+//     randomNumberofCust: function(){
+
+//         return Math.floor(Math.random() * ((this.maxCust - this.minCust) + this.minCust))}
+
+//     ,
+    
+//   fillHourlySalesArray: function(){
+//     for(let i = 0; i < cookieTime.length; i++){
+
+//       let salesPerHour = this.randomNumberofCust() * this.AverageCookies;
+//       this.hourlySalesArray.push(salesPerHour);}}}
+
+
+      
+    
+//   const tokyo = {
+//     name: 'tokyo',
+//     minCust: 3,
+//     maxCust: 24,
+//     AverageCookies: 1.2,
+//     hourlySalesArray: [],
+//     // rate: null,
+//     photo: './images/tokyo.jpeg',
+//     // getRate: function(){
+//     // this.rate = `${_randomRate()}`,
+
+   
+//     randomNumberofCust: function(){
+
+//         return Math.floor(Math.random() * ((this.maxCust - this.minCust) + this.minCust))}
+
+//     ,
+    
+//   fillHourlySalesArray: function(){
+//     for(let i = 0; i < cookieTime.length; i++){
+
+//       let salesPerHour = this.randomNumberofCust() * this.AverageCookies;
+//         this.hourlySalesArray.push(salesPerHour);}}}
+
+            
+
+//   const dubai = {
+//     name: 'dubai',
+//     minCust: 11,
+//     maxCust: 38,
+//     AverageCookies: 3.7,
+//     hourlySalesArray: [],
+//     // rate: null,
+//     photo: './images/dubai.jpeg',
+//     // getRate: function(){
+//     // this.rate = `${_randomRate()}`,
+
+   
+//     randomNumberofCust: function(){
+
+//         return Math.floor(Math.random() * ((this.maxCust - this.minCust) + this.minCust))}
+
+//     ,
+    
+//   fillHourlySalesArray: function(){
+//     for(let i = 0; i < cookieTime.length; i++){
+
+//       let salesPerHour = this.randomNumberofCust() * this.AverageCookies;
+//       this.hourlySalesArray.push(salesPerHour);}
+
+
+//   }}
+
+//   const paris = {
+//     name: 'paris',
+//     minCust: 20,
+//     maxCust: 38,
+
+//     hourlySalesArray: [],
+//     // rate: null,
+//     photo: './images/paris.jpeg',
+//     // getRate: function(){
+//     // this.rate = `${_randomRate()}`,
+
+   
+//     randomNumberofCust: function(){
+
+//         return Math.floor(Math.random() * ((this.maxCust - this.minCust) + this.minCust))}
+
+//     ,
+    
+//   fillHourlySalesArray: function(){
+//     for(let i = 0; i < cookieTime.length; i++){
+
+//       let salesPerHour = this.randomNumberofCust() * this.AverageCookies;
+//       this.hourlySalesArray.push(salesPerHour);}
+//     }
+
+
+//   }
+
+//   const lima = {
+//     name: 'lima',
+//     minCust: 2,
+//     maxCust: 16,
+//     AverageCookies: 4.6,
+//     hourlySalesArray: [],
+//     // rate: null,
+//     photo: './images/lima.jpeg',
+//     // getRate: function(){
+//     // this.rate = `${_randomRate()}`,
+
+   
+//     randomNumberofCust: function(){
+
+//         return Math.floor(Math.random() * ((this.maxCust - this.minCust) + this.minCust))}
+
+//     ,
+    
+//   fillHourlySalesArray: function(){
+//     for(let i = 0; i < cookieTime.length; i++){
+
+//       let salesPerHour = this.randomNumberofCust() * this.AverageCookies;
+//       this.hourlySalesArray.push(salesPerHour);}
+
+
+//   }
+
+
+// }
+
     
 
-    const cookieTime = ['0600', '0700', '0800', '0900', '1000', '1100', '1200', '1300', '1400', '1500', '1600', '1700', '1800', '1900'];
+    // const cookieTime = ['0600', '0700', '0800', '0900', '1000', '1100', '1200', '1300', '1400', '1500', '1600', '1700', '1800', '1900'];
 
   
  function _makeElement(tag, parent, text){
@@ -174,45 +232,48 @@ const myDog = {
   return element;
  }
 
-function renderLoc(location){
-
-  const articleElem = _makeElement ('article', storeProfiles.Div, null);
-
-  _makeElement ('h3', articleElem, location.name);
-  const ulElem = _makeElement('ul', articleElem, null);
-
-for (let i = 0; i < cookieTime.length; i++) {
-  const text = `${cookieTime[i]}: ${location.hourlySalesArray} cookies.` ;
-  let total = location.hourlySalesArray[i];
-  _makeElement('li', ulElem, text);
+Location.prototype.renderSingleLocation = function(body){
+  let total = 0;
+  
 
 
+  // const articleElem = _makeElement ('article', storeProfiles.Div, null);
 
-const totalsString = `Total: ${total} cookies`;
-_makeElement('li', ulElem, totalsString);
+  // _makeElement ('h3', articleElem, location.name);
+//   const ulElem = _makeElement('ul', articleElem, null);
+
+// for (let i = 0; i < cookieTime.length; i++) {
+//   const text = `${cookieTime[i]}: ${location.hourlySalesArray} cookies.` ;
+//   let total = location.hourlySalesArray[i];
+//   _makeElement('li', ulElem, text);
+
+
+
+// const totalsString = `Total: ${total} cookies`;
+// _makeElement('li', ulElem, totalsString);
 
 }
-}
+
 
 
 // fillHourlySalesArray();
 // renderLoc();
 
-const storeArray = [seattle, tokyo, dubai, paris, lima];
+// const storeArray = [seattle, tokyo, dubai, paris, lima];
 
-function renderAllLoc(){
+// function renderAllLoc(){
 
-for (let i = 0; i < storeArray.length; i++) {
-  const currentLoc = storeArray[i];
-  currentLoc.fillHourlySalesArray();
-  renderLoc(currentLoc);
+// for (let i = 0; i < storeArray.length; i++) {
+//   const currentLoc = storeArray[i];
+//   currentLoc.fillHourlySalesArray();
+//   renderLoc(currentLoc);
 
 
-}
+// }
 
-};
+// };
 
-renderAllLoc();
+// renderAllLoc();
 
   // const articleElem = document.createElement('article');
   // storeDiv.appendChild(articleElem);
