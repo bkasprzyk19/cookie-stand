@@ -1,14 +1,17 @@
 
 body{
-  background-color: orangered;
+  background-color: green;
   margin: 10px;
   ;
 }
 
 
 main {
+  margin: 20px;
 
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 
 }
 
