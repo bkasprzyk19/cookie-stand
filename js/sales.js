@@ -259,7 +259,7 @@ let tbodyElem = _makeElement('tbody', storeTable, null);
   }
 
 }
-renderAllLocations();
+
 
 
 function renderFooter() {
@@ -284,6 +284,7 @@ function renderFooter() {
   _makeElement('td', rowElem, grandTotal);
 
 }
+renderAllLocations();
 renderFooter();
 
 
