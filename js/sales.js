@@ -156,6 +156,10 @@ function handleSubmit(event){
   console.log(event);
   console.log(event.target.name.value);
   const name = event.target.name.value;
+  const minCust = event.target.minCust.value;
+  const maxCust = event.target.maxCust.value;
+  const AverageCookies = event.target.AverageCookies.value;
+  // AverageCookies = parseInt(AverageCookies);
   // const photo = event.target.photo.value;
  
 
@@ -177,10 +181,17 @@ function handleSubmit(event){
 
 
 
-  let usersLoc = new Location(name,  minCust, maxCust, AverageCookies);
+  let usersLoc = new Location(name, minCust, maxCust, AverageCookies);
   console.log(usersLoc);
+  usersLoc.randomNumberofCust();
+
+storeTable.innerHTML = '';
+
+
   Location.allLocations.push(usersLoc);
- 
+  
+  renderAllLocations();
+  renderFooter();
   event.target.reset();
 
 }
