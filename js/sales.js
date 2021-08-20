@@ -71,9 +71,126 @@ fillHourlySalesArrayAllLocations();
 
 
 
-
+  const formElem = document.getElementById('addLocForm')
 
   const storeTable = document.getElementById('storeProfiles');
+
+
+
+  
+ function _makeElement(tag, parent, text){
+
+  const element = document.createElement(tag);
+
+  parent.appendChild(element);
+
+  if(text){
+    element.textContent = text;
+
+  }
+  return element;
+ }
+
+Location.prototype.renderSingleLocation = function(body){
+  let total = 0;
+  const rowElem = document.createElement('tr');
+  body.appendChild(rowElem);
+
+    const thElem = _makeElement('th', rowElem, this.name);
+    for (let i = 0; i < cookieTime.length; i++) {
+      let cookiesNow = this.hourlySalesArray[i];
+      total += cookiesNow;
+      _makeElement('td', rowElem, cookiesNow);
+
+
+    }
+_makeElement('td', rowElem, total)}
+
+
+
+function renderAllLocations(){
+
+
+
+let tbodyElem = _makeElement('tbody', storeTable, null);
+  for(let i = 0; i < Location.allLocations.length; i++) {
+    Location.allLocations[i].renderSingleLocation(tbodyElem);
+  }
+
+}
+
+
+
+function renderFooter() {
+  const tfootElem = _makeElement('tfoot', storeTable, null);
+  const rowElem = _makeElement('tr', tfootElem, null);
+  _makeElement('th', rowElem, 'Hourly Total');
+  let hourlyTotal = 0;
+  let grandTotal = 0;
+  for (let i = 0; i < cookieTime; i++) {
+    for (let j = 0; j < Location.allLocations.length; j++) {
+      let currentLocation = Location.allLocations[j];
+      currentLocation.hourlySalesArray[i];
+      hourlyTotal += currentLocation.hourlySalesArray[i];
+
+    }
+    _makeElement('td', rowElem, hourlyTotal);
+    grandTotal += hourlyTotal;
+    hourlyTotal = 0;
+  
+  }
+
+  _makeElement('td', rowElem, grandTotal);
+
+}
+renderAllLocations();
+renderFooter();
+
+
+
+
+
+function handleSubmit(event){
+ 
+  event.preventDefault();
+  console.log(event);
+  console.log(event.target.name.value);
+  const name = event.target.name.value;
+  // const photo = event.target.photo.value;
+ 
+
+  
+  // const walleye = event.target.walleye.checked;
+  // const crab = event.target.crab.checked;
+  // const salmon = event.target.salmon.checked;
+  // const oyster = event.target.oyster.checked;
+
+  // function Location(name, minCust, maxCust, AverageCookies) {
+
+  //   this.name = name;
+  //   this.minCust = minCust;
+  //   this.maxCust = maxCust;
+  //   this.AverageCookies = AverageCookies;
+  //   this.hourlySalesArray = [];
+
+  
+
+
+
+  let usersLoc = new Location(name,  minCust, maxCust, AverageCookies);
+  console.log(usersLoc);
+  Location.allLocations.push(usersLoc);
+ 
+  event.target.reset();
+
+}
+
+formElem.addEventListener('submit', handleSubmit);
+
+
+
+
+
 
 
 //   const seattle = {
@@ -218,74 +335,6 @@ fillHourlySalesArrayAllLocations();
 
     // const cookieTime = ['0600', '0700', '0800', '0900', '1000', '1100', '1200', '1300', '1400', '1500', '1600', '1700', '1800', '1900'];
 
-  
- function _makeElement(tag, parent, text){
-
-  const element = document.createElement(tag);
-
-  parent.appendChild(element);
-
-  if(text){
-    element.textContent = text;
-
-  }
-  return element;
- }
-
-Location.prototype.renderSingleLocation = function(body){
-  let total = 0;
-  const rowElem = document.createElement('tr');
-  body.appendChild(rowElem);
-
-    const thElem = _makeElement('th', rowElem, this.name);
-    for (let i = 0; i < cookieTime.length; i++) {
-      let cookiesNow = this.hourlySalesArray[i];
-      total += cookiesNow;
-      _makeElement('td', rowElem, cookiesNow);
-
-
-    }
-_makeElement('td', rowElem, total)}
-
-
-
-function renderAllLocations(){
-
-
-
-let tbodyElem = _makeElement('tbody', storeTable, null);
-  for(let i = 0; i < Location.allLocations.length; i++) {
-    Location.allLocations[i].renderSingleLocation(tbodyElem);
-  }
-
-}
-
-
-
-function renderFooter() {
-  const tfootElem = _makeElement('tfoot', storeTable, null);
-  const rowElem = _makeElement('tr', tfootElem, null);
-  _makeElement('th', rowElem, 'Hourly Total');
-  let hourlyTotal = 0;
-  let grandTotal = 0;
-  for (let i = 0; i < cookieTime; i++) {
-    for (let j = 0; j < Location.allLocations.length; j++) {
-      let currentLocation = Location.allLocations[j];
-      currentLocation.hourlySalesArray[i];
-      hourlyTotal += currentLocation.hourlySalesArray[i];
-
-    }
-    _makeElement('td', rowElem, hourlyTotal);
-    grandTotal += hourlyTotal;
-    hourlyTotal = 0;
-  
-  }
-
-  _makeElement('td', rowElem, grandTotal);
-
-}
-renderAllLocations();
-renderFooter();
 
 
 
