@@ -184,14 +184,19 @@ function handleSubmit(event){
   let usersLoc = new Location(name, minCust, maxCust, AverageCookies);
   console.log(usersLoc);
   usersLoc.randomNumberofCust();
+  Location.allLocations.push(usersLoc);
+  // usersLoc.renderSingleLocation();
+
 
 storeTable.innerHTML = '';
+// usersLoc.fillHourlySalesArray();
+// usersLoc.fillHourlySalesArrayAllLocations();
+// Location.allLocations.push(usersLoc);
 
-
-  Location.allLocations.push(usersLoc);
+ usersLoc.fillHourlySalesArrayAllLocations();
   
   renderAllLocations();
-  renderFooter();
+  usersLoc.renderFooter();
   event.target.reset();
 
 }
